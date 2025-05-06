@@ -1,4 +1,4 @@
-# CRUISE Scenario concept
+# CRUISE scenario concept
 
 CRUISE (Comprehensive Relative Universal drIving Scenario modEl) defines a driving scenario concept.
 Within the concept, traffic is categorized in base scenarios to descripe the real-world systematically. With its underlying ontology, the scenario concept can be understood relatively easy and different abstraction layers are included to sever different stakeholder needs. 
