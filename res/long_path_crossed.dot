@@ -1,0 +1,31 @@
+digraph g {
+
+    newrank=true;
+
+    // overlap=false
+    rankdir=LR
+    splines=poly
+    ranksep=1
+    bgcolor=white
+    compound=true
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="coral"
+    width=3.4
+    ]
+
+edge[
+    arrowtail=""
+    dir=back
+    ]
+
+    cross_path_in_long_traffic -> cross_path_from_right
+    cross_path_in_long_traffic -> cross_path_from_left
+    cross_path_in_long_traffic -> cross_path_crossing_ego_TA
+    cross_path_in_long_traffic -> cross_path_entering_ego_TA
+    cross_path_in_long_traffic -> cross_path_exiting_ego_TA
+    
+}

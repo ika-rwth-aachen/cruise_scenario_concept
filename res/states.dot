@@ -1,0 +1,88 @@
+digraph g {
+
+rankdir=LR
+overlap=false
+splines=true
+ranksep=0.7
+nodesep=0.2
+bgcolor=white
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="greenyellow"
+    width=2.5
+    ]
+
+edge[
+    arrowtail=""
+    dir=back
+    ]
+
+edge[tailport=e headport=w]
+
+state[blub=<<b><i>Zustand</i></b>> fontsize="20"]
+
+free[blub=<<b>Freies Fahren</b>>]
+follow[blub=<<b><i>Folgen</i></b>>]
+approach[blub=<<b><i>Annähern</i></b>>]
+standstill[blub=<<b>Stillstand</b>>]
+reversing[blub=<<b>Rückwärtsfahrt</b>>]
+
+node[width=2.5]
+
+
+follow_lead[blub="Einem Voraus-\nfahrenden folgen"]
+follow_TJ[blub="Fahren im Stau"]
+
+
+approach_lead[blub="Annähern an einen\nVorausfahrenden"]
+approach_TJ[blub="Annähern an ein\nStauende"]
+approach_static[blub="Annähern an ein\nstatisches Objekt"]
+approach_lat[blub="Annähern an ein sich lateral\nbewegendes Objekt"]
+approach_oncoming[blub="Annähern an ein entgegen-\nkommendes Objekt"]
+approach_reversing[blub="Annähern an ein rückwärts-\nfahrendes Objekt"]
+avoid_OT_on_right[blub="Rechts Überholen\nvermeiden"]
+
+
+state -> free
+state -> follow
+state -> approach
+state -> standstill
+state -> reversing
+
+follow -> follow_lead
+follow -> follow_TJ
+
+approach -> approach_lead
+approach -> approach_TJ
+approach -> approach_static
+approach -> approach_lat
+approach -> approach_reversing
+approach -> approach_oncoming
+
+follow -> avoid_OT_on_right
+approach -> avoid_OT_on_right
+
+{rank=same;free;follow;approach;standstill}
+
+node[fillcolor="coral" width=2.5]
+
+state -> overlap_lane
+overlap_lane -> overlap_lane_following
+overlap_lane -> overlap_lane_oncoming
+
+
+// Layout
+edge[style=invis]
+
+// follow -> approach -> free
+
+// dummy[style=invis width=8]
+// dummy -> state
+// dummy -> follow
+// dummy -> free
+// dummy -> approach
+// {rank=same;state;dummy}
+}

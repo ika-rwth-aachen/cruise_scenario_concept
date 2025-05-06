@@ -1,0 +1,52 @@
+enter_parallel
+    enter_parallel_left
+        enter_parallel_forward_left
+        enter_parallel_reversing_left
+    enter_parallel_right
+        enter_parallel_forward_right
+        enter_parallel_reversing_right
+    enter_parallel_forward
+        enter_parallel_forward_left
+        enter_parallel_forward_right
+    enter_parallel_reversing
+        enter_parallel_reversing_left
+        enter_parallel_reversing_right
+enter_turning
+    enter_turning_left
+        enter_turning_forward_left
+        enter_turning_reversing_left
+    enter_turning_right
+        enter_turning_forward_right
+        enter_turning_reversing_right
+    enter_turning_forward
+        enter_turning_forward_left
+        enter_turning_forward_right
+    enter_turning_reversing
+        enter_turning_reversing_left
+        enter_turning_reversing_right
+enter_forward
+    enter_parallel_forward
+        enter_parallel_forward_left
+        enter_parallel_forward_right
+    enter_turning_forward
+        enter_turning_forward_left
+        enter_turning_forward_right
+    enter_forward_left
+        enter_turning_forward_left
+        enter_parallel_forward_left
+    enter_forward_right
+        enter_turning_forward_right
+        enter_parallel_forward_right
+enter_reversing
+    enter_parallel_reversing
+        enter_parallel_reversing_left
+        enter_parallel_reversing_right
+    enter_turning_reversing
+        enter_turning_reversing_left
+        enter_turning_reversing_right
+    enter_reversing_left
+        enter_turning_reversing_left
+        enter_parallel_reversing_left
+    enter_reversing_right
+        enter_turning_reversing_right
+        enter_parallel_reversing_right

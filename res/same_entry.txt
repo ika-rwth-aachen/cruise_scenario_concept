@@ -1,0 +1,35 @@
+intersection_maneuver
+    pass_straight
+        parallel_entry_passing_straight_with_obj_left_turning_right
+        parallel_entry_passing_straight_with_obj_right_turning_left
+    left_turn
+        parallel_entry_turning_left_with_obj_left_passing_straight
+        parallel_entry_turning_left_with_obj_left_turning_right
+    right_turn
+        parallel_entry_turning_right_with_obj_right_passing_straight
+        parallel_entry_turning_right_with_obj_right_turning_left
+intersection_conflict
+    conflict_with_parallel_entry_from_left
+        parallel_entry_passing_straight_with_obj_left_turning_right
+        parallel_entry_turning_left_with_obj_left_passing_straight
+        parallel_entry_turning_left_with_obj_left_turning_right
+    conflict_with_parallel_entry_from_right
+        parallel_entry_passing_straight_with_obj_right_turning_left
+        parallel_entry_turning_right_with_obj_right_passing_straight
+        parallel_entry_turning_right_with_obj_right_turning_left
+    conflict_with_obj_turning_left
+        parallel_entry_passing_straight_with_obj_right_turning_left
+        parallel_entry_turning_right_with_obj_right_turning_left
+    conflict_with_obj_turning_right
+        parallel_entry_passing_straight_with_obj_left_turning_right
+        parallel_entry_turning_left_with_obj_left_turning_right
+    conflict_with_obj_passing_straight
+        parallel_entry_turning_right_with_obj_right_passing_straight
+        parallel_entry_turning_left_with_obj_left_passing_straight
+    intersecting_conflict
+        parallel_entry_passing_straight_with_obj_left_turning_right
+        parallel_entry_passing_straight_with_obj_right_turning_left
+        parallel_entry_turning_right_with_obj_right_passing_straight
+        parallel_entry_turning_right_with_obj_right_turning_left
+        parallel_entry_turning_left_with_obj_left_passing_straight
+        parallel_entry_turning_left_with_obj_left_turning_right

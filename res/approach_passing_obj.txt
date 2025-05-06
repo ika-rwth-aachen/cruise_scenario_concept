@@ -1,0 +1,96 @@
+approach_passing_obj   
+    left_turn_approach_passing_obj
+        left_turn_approach_obj_from_left_crossing_after_node
+        left_turn_approach_obj_from_left_crossing_before_node
+        left_turn_approach_obj_from_left_passing_straight_intersecting
+        left_turn_approach_obj_from_left_turning_left
+        left_turn_approach_obj_from_right_crossing_after_node
+        left_turn_approach_obj_from_right_crossing_before_node
+        left_turn_approach_oncoming_obj_passing_straight_intersecting
+    pass_straight_approach_passing_obj	
+        pass_straight_approach_obj_from_left_crossing_after_node
+        pass_straight_approach_obj_from_left_crossing_before_node
+        pass_straight_approach_obj_from_left_passing_straight
+        pass_straight_approach_obj_from_right_crossing_after_node
+        pass_straight_approach_obj_from_right_crossing_before_node
+        pass_straight_approach_obj_from_right_passing_straight
+        pass_straight_approach_obj_from_right_turning_left_intersecting
+        pass_straight_approach_oncoming_obj_turning_left
+    right_turn_approach_passing_obj
+        right_turn_approach_obj_from_left_crossing_after_node
+        right_turn_approach_obj_from_left_crossing_before_node
+        right_turn_approach_obj_from_right_crossing_after_node
+        right_turn_approach_obj_from_right_crossing_before_node
+    u-turn_approach_passing_obj
+        u-turn_approach_obj_from_left_crossing_after_node
+        u-turn_approach_obj_from_left_crossing_before_node
+        u-turn_approach_obj_from_right_crossing_after_node
+        u-turn_approach_obj_from_right_crossing_before_node
+    approach_passing_obj_from_left
+        left_turn_approach_obj_from_left_crossing_after_node
+        left_turn_approach_obj_from_left_crossing_before_node
+        left_turn_approach_obj_from_left_passing_straight_intersecting
+        left_turn_approach_obj_from_left_turning_left
+        pass_straight_approach_obj_from_left_crossing_after_node
+        pass_straight_approach_obj_from_left_crossing_before_node
+        pass_straight_approach_obj_from_left_passing_straight
+        right_turn_approach_obj_from_left_crossing_after_node
+        right_turn_approach_obj_from_left_crossing_before_node
+        u-turn_approach_obj_from_left_crossing_after_node
+        u-turn_approach_obj_from_left_crossing_before_node
+    approach_passing_obj_from_right
+        left_turn_approach_obj_from_right_crossing_after_node
+        left_turn_approach_obj_from_right_crossing_before_node
+        pass_straight_approach_obj_from_right_crossing_after_node
+        pass_straight_approach_obj_from_right_crossing_before_node
+        pass_straight_approach_obj_from_right_passing_straight
+        pass_straight_approach_obj_from_right_turning_left_intersecting
+        right_turn_approach_obj_from_right_crossing_after_node
+        right_turn_approach_obj_from_right_crossing_before_node
+        u-turn_approach_obj_from_right_crossing_after_node
+        u-turn_approach_obj_from_right_crossing_before_node
+    approach_passing_obj_crossing_after_node
+        left_turn_approach_obj_from_left_crossing_after_node
+        left_turn_approach_obj_from_right_crossing_after_node
+        pass_straight_approach_obj_from_left_crossing_after_node
+        pass_straight_approach_obj_from_right_crossing_after_node
+        right_turn_approach_obj_from_left_crossing_after_node
+        right_turn_approach_obj_from_right_crossing_after_node
+        turn_approach_obj_from_left_crossing_after_node
+        turn_approach_obj_from_right_crossing_after_node
+    approach_passing_obj_crossing_before_node
+        left_turn_approach_obj_from_left_crossing_before_node
+        left_turn_approach_obj_from_right_crossing_before_node
+        pass_straight_approach_obj_from_left_crossing_before_node
+        pass_straight_approach_obj_from_right_crossing_before_node
+        right_turn_approach_obj_from_left_crossing_before_node
+        right_turn_approach_obj_from_right_crossing_before_node
+        u-turn_approach_obj_from_left_crossing_before_node
+        u-turn_approach_obj_from_right_crossing_before_node
+    approach_passing_obj_passing_straight
+        left_turn_approach_obj_from_left_passing_straight_intersecting
+        left_turn_approach_oncoming_obj_passing_straight_intersecting
+        pass_straight_approach_obj_from_left_passing_straight
+        pass_straight_approach_obj_from_right_passing_straight
+    approach_passing_obj_turning_left
+        left_turn_approach_obj_from_left_turning_left
+        pass_straight_approach_obj_from_right_turning_left_intersecting
+        pass_straight_approach_oncoming_obj_turning_left
+
+
+
+
+
+
+
+
+
+    passing_straight_approaching_obj_entering_parallel_from_left_turning_right
+	passing_straight_approaching_obj_entering_parallel_from_right_turning_left
+	turning_left_approaching_obj_entering_parallel_from_left_passing_straight
+	turning_left_approaching_obj_entering_parallel_from_left_turning_right
+	turning_right_approaching_obj_entering_parallel_from_right_passing_straight
+	turning_right_approaching_obj_entering_parallel_from_right_turning_left
+
+
+    

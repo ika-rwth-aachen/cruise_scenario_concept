@@ -1,0 +1,68 @@
+digraph g {
+
+overlap = false;
+rankdir = LR
+splines=true
+ranksep=1.2
+nodesep=0.2
+bgcolor=white
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="darkolivegreen1"
+    width=2
+    ]
+
+edge[
+    arrowtail=""
+    dir=back
+    ]
+
+edge[tailport=e headport=w]
+
+overlay[blub=<<i><b>Überlagerte <br/>Interaktion </b></i>> fontsize="20"]
+
+node [width=4.7]
+
+passed[blub=<<i>Vorbeifahrt eines<br/>anderen Fahrzeugs</i>>]
+passing[blub=<<i>Vorbeifaht an einem<br/>anderen Fahrzeug</i>>]
+neighbour[blub=<<i>Laterales Verweilen<br/>eines anderen Fahrzeugs</i>>]
+close_obj_side[blub=<<i>Laterales<br/>Nahdistanzereignis</i>>]
+passed_lr[shape=record blub="{Vorbeifahrt eines\nanderen Fahrzeugs|{links|rechts}}"]
+passing_lr[shape=record blub="{Vorbeifaht an einem\nanderen Fahrzeug|{links|rechts}}"]
+neighbour_lr[shape=record blub="{Laterales Verweilen\neines Objekts|{links|rechts}|des Ego-Fahrzeugs}"]
+close_obj_side_lr[shape=record blub="{Laterales\nNahdistanzereignis|{links|rechts}|des Ego-Fahrzeugs}"]
+surrounding_lc[blub="Fahrstreifenwechsel eines\nFahrzeugs im Umfeld"]
+close_obj_behind[blub="Dichtes Auffahren\neines Hinterherfahrenden"]
+rear_obj_approaching[blub="Annähern eines\nHinterherfahrenden"]
+priority_vehicle[blub="Vorrangiges Fahrzeug"]
+wrong_way_passing[blub="Vorbeifahrt eines\nFalschfahrers"]
+swerving_obj[blub="Schwanken im Fahrstreifen"]
+emergency_corridor[blub="Rettungsgasse"]
+passed_in_lane[blub="Vorbeifahrt im Ego-Fahrstreifen"]
+object_overlapping_lane[blub="Dauerhaftes Fahrstreifenüberlappen"]
+
+overlay -> passed -> passed_lr
+overlay -> passing -> passing_lr
+overlay -> neighbour -> neighbour_lr
+overlay -> wrong_way_passing
+overlay -> passed_in_lane
+overlay -> object_overlapping_lane
+overlay -> close_obj_side -> close_obj_side_lr
+
+// Make things a bit more readable
+// edge[
+//     arrowhead="empty"
+//     dir=forward
+//     ]
+
+overlay -> surrounding_lc
+overlay -> close_obj_behind
+overlay -> rear_obj_approaching
+overlay -> priority_vehicle
+overlay -> swerving_obj
+overlay -> emergency_corridor
+
+}

@@ -1,0 +1,91 @@
+digraph g {
+
+rankdir=LR
+overlap=false
+splines=true
+ranksep=0.7
+nodesep=0.2
+bgcolor=white
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="coral"
+    width=2.7
+    ]
+
+edge[
+    arrowtail=""
+    dir=back
+    ]
+
+edge[tailport=e headport=w]
+
+intersection_maneuver
+
+intersection_maneuver -> right_turn
+intersection_maneuver -> left_turn
+intersection_maneuver -> pass_straight
+intersection_maneuver -> u_turn
+
+intersection_maneuver -> free_intersection_maneuver
+intersection_maneuver -> following_in_intersection
+intersection_maneuver -> approaching_in_intersection
+intersection_maneuver -> standstill_in_intersection
+
+approaching_in_intersection -> approaching_static_in_intersection
+approaching_in_intersection -> approaching_lead_in_intersection
+
+right_turn -> right_turn_free
+left_turn -> left_turn_free
+pass_straight -> pass_straight_free
+u_turn -> u_turn_free
+
+right_turn -> right_turn_following_lead
+left_turn -> left_turn_following_lead
+pass_straight -> pass_following_lead
+u_turn -> u_turn_following_lead
+
+right_turn -> right_turn_approaching_lead
+left_turn -> left_turn_approaching_lead
+pass_straight -> pass_approaching_lead
+u_turn -> u_turn_with_approaching_lead
+
+right_turn -> right_turn_approaching_static
+left_turn -> left_turn_approaching_static
+pass_straight -> pass_approaching_static
+u_turn -> u_turn_with_approaching_static
+
+right_turn -> right_turn_standstill
+left_turn -> left_turn_standstill
+pass_straight -> pass_standstill
+u_turn -> u_turn_standstill
+
+free_intersection_maneuver -> right_turn_free
+free_intersection_maneuver -> left_turn_free
+free_intersection_maneuver -> pass_straight_free
+free_intersection_maneuver -> u_turn_free
+
+following_in_intersection -> right_turn_following_lead
+following_in_intersection -> left_turn_following_lead
+following_in_intersection -> pass_following_lead
+following_in_intersection -> u_turn_following_lead
+
+approaching_lead_in_intersection -> right_turn_approaching_lead
+approaching_lead_in_intersection -> left_turn_approaching_lead
+approaching_lead_in_intersection -> pass_approaching_lead
+approaching_lead_in_intersection -> u_turn_with_approaching_lead
+
+approaching_static_in_intersection -> right_turn_approaching_static
+approaching_static_in_intersection -> left_turn_approaching_static
+approaching_static_in_intersection -> pass_approaching_static
+approaching_static_in_intersection -> u_turn_with_approaching_static
+
+standstill_in_intersection -> right_turn_standstill
+standstill_in_intersection -> left_turn_standstill
+standstill_in_intersection -> pass_standstill
+standstill_in_intersection -> u_turn_standstill
+
+}
+

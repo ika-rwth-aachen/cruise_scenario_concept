@@ -1,0 +1,291 @@
+digraph g {
+
+    // "labels" vom Bast-Graph have been replaced with "label" to make them disapper and safe room
+
+    newrank=true;
+
+    // overlap=false
+    rankdir=LR
+    splines=poly
+    ranksep=1
+    bgcolor=white
+    compound=true
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="darkolivegreen1"
+    width=2.5
+    ]
+
+edge[
+    arrowtail="normal"
+    dir=back
+    ]
+
+
+    transition[label=<<b><i>Transition </i></b>> fontsize="20"]
+    node[fillcolor="coral" width=2.5]
+    transition->enter
+    transition->exit
+    transition -> transition_with_lead
+    transition -> transition_with_oncoming
+    node[fillcolor="darkolivegreen1" width=2.5]
+    
+    subgraph basic_transitions{ //< start basic_transitions
+
+        enter_lead[label=<<b><i>Eintritt eines<br/>Vorausfahrenden</i></b>>]
+        exit_lead[label=<<b><i>Austritt eines<br/>Vorausfahrenden</i></b>>]
+        lane_change[label=<<b><i>Fahrstreifenwechsel </i></b>>]
+
+    } //< end basic_transitions
+
+    node[width=2.5]
+
+    subgraph first_layer{ //< start first_layer
+
+    aborted_enter_lead[label=<<i>Abgebrochener Eintritt<br/>eines Vorausfahrenden</i>>]
+ 	incomplete_enter_lead[label=<<i>Unvollständiger Eintritt<br/>eines Vorausfahrenden</i>>]
+	cut_through[label=<<i>Durchscherer</i>>]
+
+    cut_though_lr[fillcolor=forestgreen shape=record label="{Durchscherer von|{links|rechts}}"]
+
+    cut_through -> cut_though_lr
+
+    enter_lead_lr[fillcolor=forestgreen shape=record label="{Eintritt eines\nVorausfahrenden von|{links|rechts}}"]
+    exit_lead_lr[fillcolor=forestgreen shape=record label="{Austritt eines\nVorausfahrenden nach|{links|rechts}}"]
+
+    merging_lc[label="Zusammenführende\nFahrstreifenwechsel"]
+    sync_lc[label="Synchrone\nFahrstreifenwechsel"]
+
+    subgraph cluster0{ //< start cluster0
+        bgcolor=transparent
+        lc_l[label=<<i>Fahrstreifenwechsel<br/>nach links</i>>]
+        lc_r[label=<<i>Fahrstreifenwechsel<br/>nach rechts</i>>]
+        {rank=same;lc_l;lc_r}
+    } //< end cluster0
+
+    subgraph cluster1{ //< start cluster1
+        bgcolor=transparent
+        lc_0[label=<<i>Freier<br/>Fahrstreifenwechsel</i>>]
+        lc_1[label=<<i>Fahrstreifenwechsel<br/>mit Vorausfahrendem</i>>]
+        lc_2[label=<<i>Fahrstreifenwechsel<br/>mit Hinterherfahrendem</i>>]
+        lc_3[label=<<i>FSW mit Vorausfahrendem<br/>und Hinterherfahrendem</i>>]
+        {rank=same;lc_0;lc_1;lc_2;lc_3}
+        } //< end cluster1
+
+    multi_lc[label=<<i>Mehrfacher<br/>Fahrstreifenwechsel</i>>]
+    aborted_lc[label=<<i>Abgebrochener<br/>Fahrstreifenwechsel</i>>]
+
+    } //< end first_layer
+    
+    node[width=2.5]
+
+    subgraph second_layer{ //< start second_layer
+
+    aborted_enter_lead_lr[fillcolor=forestgreen shape=record label="{Abgebrochener Eintritt\neines Vorausfahrenden von|{links|rechts}}"]
+ 	incomplete_enter_lead_lr[fillcolor=forestgreen shape=record label="{Unvollständiger Eintritt\neines Vorausfahrenden von|{links|rechts}}"]
+    
+    merging_lc[label=<<i>Zusammenführende<br/>Fahrstreifenwechsel</i>>]
+    sync_lc[label=<<i>Synchrone<br/>Fahrstreifenwechsel</i>>] 
+
+    lc_lr_X[fillcolor=forestgreen shape=record label="{Fahrstreifenwechsel|{links|rechts}|{frei|mit Vorausfahrendem|mit Hinterherfahrendem|mit Vorausfahrendem\nund Hinterherfahrendem}}"]
+    multi_lc_lr[fillcolor=forestgreen shape=record label="{Mehrfacher\nFahrstreifenwechsel|{links|rechts}}"]
+    sync_lcs_lr_13[fillcolor=forestgreen shape=record label="{Synchrone\nFahrstreifenwechsel|{links|rechts}|{ohne Hinterherfahrenden|mit Hinterherfahrendem}}"]
+    merging_lcs_lr_13[fillcolor=forestgreen shape=record label="{Zusammenführender\nFahrstreifenwechsel|{links|rechts}|{ohne Hinterherfahrenden|mit Hinterherfahrendem}}"]
+    aborted_lc_lr_X[fillcolor=forestgreen shape=record label="{Abgebrochener\nFahrstreifenwechsel|{links|rechts}|{frei|mit Vorausfahrendem|mit Hinterherfahrendem|mit Vorausfahrendem\nund Hinterherfahrendem}}"]
+
+    merging_cut_through[label=<<i>Zusammenführender Durchscherer</i>>]
+    merging_cut_through_lr[shape=record label="{Zusammenführender\nDurchscherer|{links|rechts}|{ohne Hinterherfahrenden|mit Hinterherfahrendem}}"]
+
+    } //< end second_layer
+
+    enter->enter_lead[tailport=e headport=w]
+    transition_with_lead->enter_lead[tailport=e headport=w]
+    exit->exit_lead[tailport=e headport=w]
+    transition_with_lead->exit_lead[tailport=e headport=w]
+    transition->lane_change[tailport=e headport=w]
+    lane_change->lc_l [lhead=cluster0 tailport=e headport=w]
+
+    lane_change->lc_2[lhead=cluster1 tailport=e headport=w]
+    lane_change->multi_lc[tailport=e headport=w]
+    lane_change->aborted_lc[tailport=e headport=w]
+
+    enter_lead -> enter_lead_lr[tailport=e headport=w]
+    exit_lead -> exit_lead_lr[tailport=e headport=w]
+    
+    lane_change->merging_lc[tailport=e headport=w]
+    enter_lead->merging_lc[tailport=e headport=w]
+    lane_change->sync_lc[tailport=e headport=w]
+    enter_lead->sync_lc[tailport=e headport=w]
+
+    enter_lead->aborted_enter_lead[tailport=e headport=w]
+	enter_lead->incomplete_enter_lead[tailport=e headport=w]
+
+    aborted_enter_lead -> aborted_enter_lead_lr[tailport=e headport=w]
+    incomplete_enter_lead -> incomplete_enter_lead_lr[tailport=e headport=w]
+
+	enter_lead->cut_through[tailport=e headport=w]
+	exit_lead->cut_through[tailport=e headport=w]
+
+	cut_through -> merging_cut_through[tailport=e headport=w]
+	merging_lc -> merging_cut_through[tailport=e headport=w]
+    
+
+    lc_1->lc_lr_X[ltail=cluster1 tailport=e headport=w]
+    lc_l->lc_lr_X[ltail=cluster0 tailport=e headport=w]
+
+    multi_lc->multi_lc_lr[tailport=e headport=w]
+    lc_r->multi_lc_lr[ltail=cluster0 tailport=e headport=w]
+
+    aborted_lc->aborted_lc_lr_X[tailport=e headport=w tailport=e headport=w]
+    lc_1->aborted_lc_lr_X[ltail=cluster1 tailport=e headport=w]
+    lc_r->aborted_lc_lr_X[ltail=cluster0 tailport=e headport=w]
+
+    sync_lc->sync_lcs_lr_13[tailport=e headport=w]
+    lc_l->sync_lcs_lr_13[ltail=cluster0 tailport=e headport=w]
+    lc_1->sync_lcs_lr_13[ltail=cluster1 tailport=e headport=w]
+
+    merging_lc->merging_lcs_lr_13[tailport=e headport=w]
+    lc_l->merging_lcs_lr_13[ltail=cluster0 tailport=e headport=w]
+    lc_1->merging_lcs_lr_13[ltail=cluster1 tailport=e headport=w]
+
+    merging_cut_through_lr[fillcolor=forestgreen]
+
+    merging_cut_through->merging_cut_through_lr
+    lc_l->merging_cut_through[ltail=cluster0 weight=0.1 tailport=e headport=w]
+    lc_3->merging_cut_through[ltail=cluster1 weight=0.1 tailport=e headport=w]
+
+    # NEW VVM Additions
+    
+    node[fillcolor="coral" width=2.5]
+
+    enter[label=<<i>Eintritt</i>>]
+    exit[label=<<i>Austritt</i>>]
+
+    subgraph clusterExitLR{
+        exit_l[label=<<i>Austritt<br/>nach links</i>>]
+        exit_r[label=<<i>Austritt<br/>nach rechts</i>>]
+        {rank=same;exit_l;exit_r}
+    }
+
+    subgraph clusterEnterLR{
+        enter_l[label=<<i>Eintritt<br/>von links</i>>]
+        enter_r[label=<<i>Eintritt<br/>von rechts</i>>]
+        {rank=same;enter_l;enter_r}
+    }
+
+    transition_with_lead[label=<<i>Transition mit<br/>Vorausfahrendem</i>>]
+    transition_with_oncoming[label=<<i>Transition mit<br/>Entgegenkommenden</i>>]
+
+    enter_oncoming[label=<<i>Eintritt eines<br/>Entgegenkommenden</i>>]
+    exit_oncoming[label=<<i>Austritt eines<br/>Entgegenkommenden</i>>]
+
+    lc_from_oncoming[label=<<i>Fahrstreifenwechsel<br/>von Gegenverkehr</i>>]
+
+    lc_from_oncoming_X[shape=record label="{{Fahrstreifenwechsel\nvon Gegenverkehr}|{frei|mit Vorausfahrendem|mit Hinterherfahrendem|mit Vorausfahrendem\nund Hinterherfahrendem}}"]
+
+    lc_to_oncoming[label=<<i>Fahrstreifenwechsel<br/>zum Gegenverkehr</i>>]
+
+    lc_to_oncoming_X[shape=record label="{{Fahrstreifenwechsel\nin Gegenverkehr}|{ohne Hinterherfahrenden|mit Hinterherfahrendem}}"]
+
+    enter_making_u_turn[label="Eintritt eines Wendenden"]
+
+    enter_from_non_ego_TA[label=<<i>Eintritt aus anderem<br/>Verkehrsraum</i>>]
+    exit_to_non_ego_TA[label=<<i>Austritt zu anderem<br/>Verkehrsraum</i>>]
+
+    aborted_exit_lead[label="Abgebrochener Austritt\neines Vorausfahrenden"]
+    
+    exit_making_u_turn[label="Austritt eines\nWendenden"]
+
+    exit_oncoming_within_ego_TA[label="Austritt eines Entgegenkommenden\nim Ego-Verkehrsraum"]
+    exit_oncoming_to_non_ego_TA[label="Austritt eines Entgegenkommenden\naus Ego-Verkehrsraum"]
+    enter_oncoming_within_ego_TA[label="Eintritt eines Entgegenkommenden\nim Ego-Verkehrsraum"]
+    enter_oncoming_to_non_ego_TA[label="Eintritt eines Entgegenkommenden\naus Ego-Verkehrsraum"]
+
+    subgraph cluster2{
+    enter_from_non_ego_TA_turning[label=<<i>Eintritt in Ego-Verkehrsraum<br/>einbiegend</i>>]
+    enter_from_non_ego_TA_parallel[label=<<i>Eintritt in Ego-Verkehrsraum<br/>parallel</i>>]
+    }
+    
+    subgraph cluster3{
+    enter_from_non_ego_TA_going_straight[label=<<i>Eintritt in Ego-Verkehrsraum<br/>vorwärts</i>>]
+    enter_from_non_ego_TA_reversing[label=<<i>Eintritt in Ego-Verkehrsraum<br/>rückwärts</i>>]
+    }
+
+    enter_from_non_ego_TA_X[shape=record label="{Eintritt eines Vorausfahrendem\nin den Ego-Verkehrsraum|{von links|von rechts}|{vorwärts|rückwärts}|{parallel|einbiegend}}"]
+
+    subgraph cluster5{
+    exit_to_non_ego_TA_turning[label=<<i>Austritt aus Ego-Verkehrsraum<br/>abbiegend</i>>]
+    exit_to_non_ego_TA_parallel[label=<<i>Austritt aus Ego-Verkehrsraum<br/>parallel</i>>]
+    }
+    
+    subgraph cluster6{
+    exit_to_non_ego_TA_going_straight[label=<<i>Austritt aus Ego-Verkehrsraum<br/>vorwärts</i>>]
+    exit_to_non_ego_TA_reversing[label=<<i>Austritt aus Ego-Verkehrsraum<br/>rückwärts</i>>]
+    }
+
+    enter -> enter_l[ltail=clusterEnterLR]
+    exit -> exit_l[ltail=clusterExitLR]
+
+    enter_l -> enter_lead_lr [ltail=clusterEnterLR]
+    exit_l -> exit_lead_lr [ltail=clusterExitLR]
+
+    exit_to_non_ego_TA_X[shape=record label="{Eintritt eines Vorausfahrendem\nin den Ego-Verkehrsraum|{von links|von rechts}|{vorwärts|rückwärts}|{parallel|einbiegend}}"]
+
+    lane_change -> lc_to_oncoming
+    lane_change -> lc_from_oncoming
+
+    lc_to_oncoming -> lc_to_oncoming_X
+
+    enter -> enter_oncoming
+    transition_with_oncoming -> enter_oncoming
+    exit -> exit_oncoming
+    transition_with_oncoming -> exit_oncoming
+
+    enter_lead -> enter_from_non_ego_TA
+
+    enter_from_non_ego_TA -> enter_from_non_ego_TA_turning
+    enter_from_non_ego_TA -> enter_from_non_ego_TA_parallel
+    enter_from_non_ego_TA -> enter_from_non_ego_TA_going_straight
+    enter_from_non_ego_TA -> enter_from_non_ego_TA_reversing
+
+    enter_from_non_ego_TA_turning -> enter_from_non_ego_TA_X [ltail=cluster2]
+    enter_from_non_ego_TA_going_straight -> enter_from_non_ego_TA_X [ltail=cluster3]
+    enter_l -> enter_from_non_ego_TA_X [ltail=clusterEnterLR]
+
+    exit_lead -> exit_to_non_ego_TA
+
+    exit_to_non_ego_TA -> exit_to_non_ego_TA_turning
+    exit_to_non_ego_TA -> exit_to_non_ego_TA_parallel
+    exit_to_non_ego_TA -> exit_to_non_ego_TA_going_straight
+    exit_to_non_ego_TA -> exit_to_non_ego_TA_reversing
+
+    exit_to_non_ego_TA_turning -> exit_to_non_ego_TA_X [ltail=cluster5]
+    exit_to_non_ego_TA_going_straight -> exit_to_non_ego_TA_X [ltail=cluster6]
+    exit_l -> exit_to_non_ego_TA_X [ltail=clusterExitLR]
+
+    enter_lead -> enter_making_u_turn
+    exit_lead -> exit_making_u_turn
+
+    lc_from_oncoming -> lc_from_oncoming_X 
+    lc_0 -> lc_from_oncoming_X [ltail=cluster1]
+
+    exit_oncoming -> exit_oncoming_within_ego_TA
+    exit_oncoming -> exit_oncoming_to_non_ego_TA
+
+    enter_oncoming -> enter_oncoming_within_ego_TA
+    enter_oncoming -> enter_oncoming_to_non_ego_TA
+
+    exit_lead -> aborted_exit_lead
+
+    // Layout
+    edge[style=invis]
+    
+    lc_l->lc_r
+    lc_0->lc_1->lc_2->lc_3
+
+    exit_lead->enter_lead[constraint=false]
+
+}

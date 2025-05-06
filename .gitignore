@@ -1,0 +1,15 @@
+*.csv
+*.xlsx
+*.json
+*.png
+*.svg
+*.md
+*.html
+cruise.properties
+!res/ScenarioDerivationTable.xlsx
+!README.md
+
+.venv
+*.pyc
+
+*.DS_Store

@@ -1,0 +1,77 @@
+digraph g {
+
+    newrank=true;
+
+    // overlap=false
+    rankdir=LR
+    splines=poly
+    ranksep=1
+    bgcolor=white
+    compound=true
+
+node[
+    fontname=Arial
+    shape=box
+    style=filled
+    fillcolor="coral"
+    width=3.4
+    ]
+
+edge[
+    arrowtail=""
+    dir=back
+    ]
+
+
+    intersection_transition[blub=<<b><i>Transition </i></b>> fontsize="20"]
+
+    intersection_aborted_lc[blub=<<i>Abgebrochener<br/>Fahrstreifenwechsel</i>>]
+
+    intersection_transition -> intersection_enter_lead
+    intersection_transition -> intersection_exit_lead
+    intersection_transition -> intersection_lane_change
+    intersection_enter_lead -> intersection_enter_lead_l
+    intersection_enter_lead -> intersection_enter_lead_r
+    intersection_exit_lead -> intersection_exit_lead_l
+    intersection_exit_lead -> intersection_exit_lead_r
+    intersection_exit_lead -> intersection_aborted_exit_lead
+
+    intersection_lane_change -> intersection_lc_l
+    intersection_lane_change -> intersection_lc_r
+
+    intersection_enter_lead -> intersection_aborted_enter_lead
+    intersection_lane_change -> intersection_aborted_lc
+
+    intersection_transition -> diverging_lead
+    diverging_lead -> diverging_lead_left
+    diverging_lead -> diverging_lead_right
+    diverging_lead -> diverging_lead_leaving_ego_TA
+    diverging_lead_left -> diverging_lead_leaving_ego_TA_left
+    diverging_lead_right -> diverging_lead_leaving_ego_TA_right
+    diverging_lead_leaving_ego_TA -> diverging_lead_leaving_ego_TA_left
+    diverging_lead_leaving_ego_TA -> diverging_lead_leaving_ego_TA_right
+
+    intersection_transition -> leave_TA
+}
+
+intersection_transition
+    intersection_enter_lead
+        intersection_enter_lead_l
+        intersection_enter_lead_r
+        intersection_aborted_enter_lead
+    intersection_exit_lead
+        intersection_exit_lead_l
+        intersection_exit_lead_r
+    intersection_lane_change
+        intersection_lc_l
+        intersection_lc_r
+        intersection_aborted_lc
+    diverging_lead
+        diverging_lead_left
+            diverging_lead_leaving_ego_TA_left
+        diverging_lead_right
+            diverging_lead_leaving_ego_TA_right
+        diverging_lead_leaving_ego_TA
+            diverging_lead_leaving_ego_TA_left
+            diverging_lead_leaving_ego_TA_right
+
