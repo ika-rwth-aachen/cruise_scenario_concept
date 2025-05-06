@@ -1,8 +1,15 @@
 # CRUISE scenario concept
 
 CRUISE (Comprehensive Relative Universal drIving Scenario modEl) defines a driving scenario concept.
-Within the concept, traffic is categorized in base scenarios to descripe the real-world systematically. With its underlying ontology, the scenario concept can be understood relatively easy and different abstraction layers are included to sever different stakeholder needs. 
+Within the concept, traffic is categorized in base scenarios to describe the real world systematically. With its underlying ontology, the scenario concept can be understood relatively easy and different abstraction layers are included to serve different stakeholder needs. 
 Additionally, tools are provided to check the ontology and visualize scenarios.
+
+> [!IMPORTANT]  
+> This repository is open-sourced and maintained by the [**Institute for Automotive Engineering (ika) at RWTH Aachen University**](https://www.ika.rwth-aachen.de/).  
+> **Scenario-based safety assurance** is one of many research topics within our [*Vehicle Intelligence & Automated Driving*](https://www.ika.rwth-aachen.de/en/competences/fields-of-research/vehicle-intelligence-automated-driving.html) domain.  
+> If you would like to learn more about how we can support your automated driving or robotics efforts, feel free to reach out to us!  
+> :email: ***opensource@ika.rwth-aachen.de***
+
 
 # The ontology
 [cruise.owl](cruise.owl) hosts the hierarchical structure of scenarios.
@@ -13,10 +20,10 @@ Generally, the ontology is subdivided into two main aspects:
 - superclasses
 - abstract (and refined) concepts
 
-The concepts gives the general structure/ overview over what is specified as part of the superclasses and finally base scenarios.
-The superclass branch defines the superclass-hierachy. Leaves of this ontology are called base scenarios and are the building blocks which can be used to define scenarios.
+The concepts gives the general structure/ overview of what is specified as part of the superclasses and finally base scenarios.
+The superclass branch defines the superclass-hierarchy. Leaves of this ontology are called base scenarios and are the building blocks that can be used to define scenarios.
 
-Furthermore, a second ontology with parameters is defined which can be used by the ase_engine.
+Furthermore, a second ontology with parameters is defined, which can be used by the ase_engine.
 
 You can view and edit the OWL file with [Protegé](https://protege.stanford.edu/).
 ## Supplementary material
@@ -25,14 +32,14 @@ You can view and edit the OWL file with [Protegé](https://protege.stanford.edu/
 # Tools
 
 ## Easily manipulating labels
-[src\tools\Owl2LabelXlsx.py](src\tools\Owl2LabelXlsx.py) generates an xlsx with the base scenario IDs and the related labels.
+[src\tools\Owl2LabelXlsx.py](src\tools\Owl2LabelXlsx.py) generates a xlsx with the base scenario IDs and the related labels.
 The labels can be edited in the table.
 [src\tools\PutLabelsFromXlsx.py](src\tools\PutLabelsFromXlsx.py) can be used to input the labels into the ontology xml.
 
-__Note:__ There is an issue with file encodings, when doing this on Windows. This will mess up German Umlaute. Using Libre Office in Linux works well.
+__Note:__ There is an issue with file encodings when doing this on Windows. This will mess up German Umlaute. Using Libre Office in Linux works well.
 
-## Consitensy checks
-[src\tools\CheckNamespaces.py](src\tools\CheckNamespaces.py) can be used to check, whether all entities are in the correct namespace
+## Consistency checks
+[src\tools\CheckNamespaces.py](src\tools\CheckNamespaces.py) can be used to check whether all entities are in the correct namespace
 - scenario -> `sce`
 - concepts -> `con`
 - attribute -> `attr`
@@ -50,4 +57,4 @@ The scenarios can be published in tablular formats, as xlsx, .md and .html.
 
 # References
 The methodology for the scenario concept is described in a peer-reviewed paper: [Paper](https://ieeexplore.ieee.org/document/10186385)
-Additionally, methods and base scenarios as of 2023 are documented in a deliverable of the German research project VV Methods: [Deliverable-13](https://www.vvm-projekt.de/securedl/sdl-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NDYxMzQ1NjcsImV4cCI6MTc0NjIyNDU2NywidXNlciI6MCwiZ3JvdXBzIjpbMCwtMV0sImZpbGUiOiJmaWxlYWRtaW4vdXNlcl91cGxvYWQvUGFwZXJzL0RlbGl2ZXJhYmxlMTMtU2NlbmFyaW8tYmFzZWRfTW9kZWxfb2ZfdGhlX09ERF90aHJvdWdoX1NjZW5hcmlvX0RhdGFiYXNlcy5wZGYiLCJwYWdlIjoyM30.VrPMuoxYUvAoccG1FtkFoKf87SvafqrlVSs18Eg0Nas/Deliverable13-Scenario-based_Model_of_the_ODD_through_Scenario_Databases.pdf)
+Additionally, methods and base scenarios as of 2023 are documented in a deliverable of the German research project VV Methods: [Deliverable-13](https://www.vvm-projekt.de/veroeffentlichungen)
