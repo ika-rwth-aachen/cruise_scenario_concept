@@ -1,7 +1,7 @@
-# CRUISE scenario concept
+# CRUISE
 
 CRUISE (Comprehensive Relative Universal drIving Scenario modEl) defines a driving scenario concept.
-Within the concept, traffic is categorized in base scenarios to describe the real world systematically. With its underlying ontology, the scenario concept can be understood relatively easy and different abstraction layers are included to serve different stakeholder needs. 
+Within the concept, traffic is categorized in base scenarios to describe the real world systematically. With its underlying ontology, the scenario concept can be understood relatively easy and different abstraction layers are included to serve different stakeholder needs.
 Additionally, tools are provided to check the ontology and visualize scenarios.
 
 > [!IMPORTANT]  
@@ -29,6 +29,7 @@ You can view and edit the OWL file with [Protegé](https://protege.stanford.edu/
 ## Supplementary material
 `/res`  Holds files that were used to derive the scenario, which may however be outdated.
 
+
 # Tools
 
 ## Easily manipulating labels
@@ -48,6 +49,7 @@ __Note:__ There is an issue with file encodings when doing this on Windows. This
 
 [src\tools\CountEntities.py](src\tools\CountEntities.py) gets the number of base-scenario and concepts.
 
+
 # Output:
 [src\draw\DrawFromOwl.py](src\draw\DrawFromOwl.py) generates the images for all base scenarios which are used in the .md and .html tables.
 
@@ -55,6 +57,14 @@ __Note:__ There is an issue with file encodings when doing this on Windows. This
 The scenarios can be published in tablular formats, as xlsx, .md and .html.
 (.xlsx will be without images.)
 
+
 # References
-The methodology for the scenario concept is described in a peer-reviewed paper: [Paper](https://ieeexplore.ieee.org/document/10186385)
-Additionally, methods and base scenarios as of 2023 are documented in a deliverable of the German research project VV Methods: [Deliverable-13](https://www.vvm-projekt.de/veroeffentlichungen)
+The methodology for the scenario concept is described in a peer-reviewed paper: 
+[Weber, H., Glasmacher, C., Schuldes, M., Wagener, N, and Eckstein, L. "Holistic Driving Scenario Concept for Urban Traffic", 2023 IEEE Intelligent Vehicle Symposium](https://ieeexplore.ieee.org/document/10186385)
+
+Additionally, methods and base scenarios as of 2023 are documented in a deliverable of the German research project VV Methods: 
+[Glasmacher, C., Schuldes, M., Topalakatti, P., Hristov, P., Weber, H. and Eckstein, L. "Deliverable 13 - Scenario-based Model of the ODD through Scenario Databases", VVM Project, 2023](https://www.vvm-projekt.de/veroeffentlichungen)
+
+
+# Acknowledgement
+The initial work of this repository was done within the project “Verifikations- und Validierungsmethoden automatisierter Fahrzeuge im urbanen Umfeld” which was funded by the German Federal Ministry for Economic Affairs and Climate Action.
